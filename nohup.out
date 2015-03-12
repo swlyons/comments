@@ -5,3 +5,8 @@ POST comment route
 comment route
 POST comment route
 comment route
+about to fork child process, waiting until server is ready for connections.
+forked process: 19612
+all output going to: /var/log/mongodb.log
+log file [/var/log/mongodb.log] exists; copied to temporary file [/var/log/mongodb.log.2015-03-12T17-08-26]
+ERROR: child process failed, exited with error number 100
