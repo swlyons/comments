@@ -1,0 +1,66 @@
+<!DOCTYPE html> 
+<html lang="en-US"> 
+    <head> 
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script> 
+        <script>
+            $(document).ready(function () {
+                $("#button1").click(function () {
+                    var myobj = {Name: $("#Name2").val(), Comment: $("#Comment2").val()};
+                    var jobj = JSON.stringify(myobj);
+                    console.log(jobj);
+                    $("#json").text(jobj);
+
+                    //$("#json").text(JSON.stringify($("#commentForm").serializeArray())); 
+                    var url = "http://54.152.208.122/comment";
+
+//                    $.post(url, jobj, function (data, textStatus) {
+//                        $("#done").html(textStatus);
+//                    });
+
+                });
+
+                $("#button2").click(function () {
+                    var url = "http://54.152.208.122/comment";
+                    $.getJSON(url, function (data) {
+                        var everything;
+                        everything = "<ul>";
+                        $.each(data, function (i, item) {
+                            everything += "<li> Name: " + data[i].Name + " Comment: " + data[i].Comment;
+                        });
+                        everything += "</ul>";
+                        $("#currentComments").html('Current Comments: <br>'+everything);
+                    });
+                });
+
+            });
+        </script> 
+    </head> 
+    <body> 
+        <p>
+            <span id="done"></span>
+        </p>
+        <form id="commentForm" action=""> 
+            Name: <input id="Name2" type="text" name="Name" value="Mickey"><br> 
+            comment: <input id="Comment2" type="text" name="Comment" value="Hello"><br> 
+        </form> 
+
+
+
+        <button id="button1">Submit Comments</button> 
+        <button id="button2">Show Comments</button> 
+
+        <div id="json"></div> 
+        
+        <div>
+            <p>                
+                <br>
+                <span id="currentComments">
+                    
+                </span>
+            </p>
+            
+        </div>
+    
+    
+    </body>
+</html>
